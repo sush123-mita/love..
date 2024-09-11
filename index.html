@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Marry Me?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7e7ce;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        #popup {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 1s ease, transform 1s ease; /* Fade-in and slide-up effect */
+        }
+        
+        #popup.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #popup h1 {
+            color: #ff4081;
+            margin-bottom: 20px;
+            animation: fadeInText 2s ease forwards; /* Fade-in text */
+        }
+
+        #yesBtn {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            animation: bounce 2s infinite; /* Bouncing effect */
+            transition: background-color 0.3s;
+        }
+
+        #yesBtn:hover {
+            background-color: #e91e63;
+        }
+
+        .background {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            z-index: 10;
+            animation: fadeInBackground 1.5s forwards;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeInBackground {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Overlay -->
+    <div class="background" id="background">
+        <!-- Popup Modal -->
+        <div id="popup">
+            <h1>Will you marry me?</h1>
+            <button id="yesBtn">Yes!</button>
+        </div>
+    </div>
+
+    <script>
+        // Show the popup automatically with animations
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("popup").classList.add("show");
+            }, 500); // Delay to show the popup animation after the background appears
+        };
+
+        // Action when clicking "Yes!"
+        document.getElementById("yesBtn").onclick = function() {
+            alert("Yay! I knew it! 💍");
+        };
+    </script>
+</body>
+</html>
